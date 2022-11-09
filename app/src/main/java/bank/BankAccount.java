@@ -45,10 +45,13 @@ public class BankAccount {
         recordTransaction("credit", formattedAmount, formattedDate, formattedBalance);
     }
 
-    public void withdraw(BigDecimal num) {
+    public void withdraw(BigDecimal num) throws Exception {
         withdraw(num, LocalDateTime.now());
     }
-    public void withdraw(BigDecimal num, LocalDateTime date) {
+    public void withdraw(BigDecimal num, LocalDateTime date) throws Exception {
+        if (num.compareTo(getBalance()) == 1) {
+            throw new Exception("You cannot withdraw more money than you have in your account");
+        }
         String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String formattedAmount = String.format("%.2f", num);
         BigDecimal newBalance = balance.subtract(num);
