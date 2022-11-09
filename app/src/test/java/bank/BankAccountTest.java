@@ -24,4 +24,12 @@ public class BankAccountTest {
 
         assertEquals("Deposit of 1000 and 500 into a new account has balance £1500", BigDecimal.valueOf(1500), acc.getBalance());
     }
+
+    @Test public void deposit_InNewAccount_ThenWithdraw() {
+        BankAccount acc = new BankAccount();
+        acc.deposit(BigDecimal.valueOf(1000));
+        acc.withdraw(BigDecimal.valueOf(500));
+
+        assertEquals("Deposit of 1000 and withdraw 500 into a new account has balance £500", BigDecimal.valueOf(500), acc.getBalance());
+    }
 }
