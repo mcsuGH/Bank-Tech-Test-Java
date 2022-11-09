@@ -10,7 +10,7 @@ Clone this repository using `git clone https://github.com/mcsuGH/Bank-Tech-Test-
 Ensure you have a JVM installed such as [Java 17 LTS](https://www.oracle.com/java/technologies/downloads/#jdk17-mac) and then run `gradle` to install any dependencies.
 \
 \
-To use the program, open the project in an IDE such as VSCode or IntelliJ and open the file `Bank.java` to then run the project.
+To use the program, open the project in an IDE such as VSCode or IntelliJ and open the file `app/src/main/java/bank/Bank.java` to then run the project.
 \
 \
 Example of my code running:
