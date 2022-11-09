@@ -4,6 +4,10 @@
 package bank;
 
 import java.math.BigDecimal;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class App {
     public String getGreeting() {
@@ -11,11 +15,24 @@ public class App {
     }
 
     public static void main(String[] args) {
+        String instantExpected = "2012-01-10T16:26:30Z";
+        Clock clock = Clock.fixed(Instant.parse(instantExpected), ZoneId.of("UTC"));
+        Instant instant = Instant.now();
+        LocalDateTime dateTime = LocalDateTime.now(clock);
+        String instantExpected2 = "2012-01-13T16:26:30Z";
+        Clock clock2 = Clock.fixed(Instant.parse(instantExpected2), ZoneId.of("UTC"));
+        Instant instant2 = Instant.now();
+        LocalDateTime dateTime2 = LocalDateTime.now(clock2);
+        String instantExpected3 = "2012-01-14T16:26:30Z";
+        Clock clock3 = Clock.fixed(Instant.parse(instantExpected3), ZoneId.of("UTC"));
+        Instant instant3 = Instant.now();
+        LocalDateTime dateTime3 = LocalDateTime.now(clock3);
         BankAccount acc = new BankAccount();
-        acc.deposit(BigDecimal.valueOf(1000));
-        acc.deposit(BigDecimal.valueOf(2000));
-        acc.withdraw(BigDecimal.valueOf(500));
-        acc.printStatement();
 
+        acc.deposit(BigDecimal.valueOf(1000), dateTime);
+        acc.deposit(BigDecimal.valueOf(2000), dateTime2);
+        acc.withdraw(BigDecimal.valueOf(500), dateTime3);
+        acc.printStatement();
+        acc.printBalance();
     }
 }
