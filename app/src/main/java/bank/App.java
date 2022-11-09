@@ -3,12 +3,19 @@
  */
 package bank;
 
+import java.math.BigDecimal;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        BankAccount acc = new BankAccount();
+        acc.deposit(BigDecimal.valueOf(1000));
+        acc.deposit(BigDecimal.valueOf(2000));
+        acc.withdraw(BigDecimal.valueOf(500));
+        acc.printStatement();
+
     }
 }

@@ -61,4 +61,9 @@ public class BankAccount {
     public void printStatement() {
         Statement.printStatement(transactionHistory);
     }
+
+    public void printBalance() {
+        String formattedBalance = String.format("Current Balance: £%.2f", getBalance());
+        System.out.println(formattedBalance);
+    }
 }
