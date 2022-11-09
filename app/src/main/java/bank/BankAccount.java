@@ -8,4 +8,8 @@ public class BankAccount {
     public BigDecimal getBalance() {
         return balance;
     }
+
+    public void deposit(BigDecimal num) {
+        balance = balance.add(num);
+    }
 }
