@@ -23,7 +23,4 @@ public class BankAccount {
         setBalance(newBalance);
     }
 
-    public void printStatement() {
-        System.out.println("date || credit || debit || balance");
-    }
 }
