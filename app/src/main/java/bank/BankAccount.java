@@ -9,11 +9,17 @@ public class BankAccount {
         return balance;
     }
 
+    private void setBalance(BigDecimal num) {
+        balance = num;
+    }
+
     public void deposit(BigDecimal num) {
-        balance = balance.add(num);
+        BigDecimal newBalance = balance.add(num);
+        setBalance(newBalance);
     }
 
     public void withdraw(BigDecimal num) {
-        balance = balance.subtract(num);
+        BigDecimal newBalance = balance.subtract(num);
+        setBalance(newBalance);
     }
 }
