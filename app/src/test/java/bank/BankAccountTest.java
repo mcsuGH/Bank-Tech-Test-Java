@@ -3,6 +3,8 @@ package bank;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +15,18 @@ import java.time.LocalDateTime;
 
 
 public class BankAccountTest {
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @Before
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @After
+    public void tearDown() {
+        System.setOut(standardOut);
+    }
     @Test public void getBalance_InNewAccount() {
         BankAccount acc = new BankAccount();
         assertEquals("Balance of new account should be 0", BigDecimal.valueOf(0), acc.getBalance());
@@ -65,5 +79,18 @@ public class BankAccountTest {
         mockHistory.add(mockTransaction);
 
         assertEquals("Transaction is added into history", mockHistory, acc.getTransactionHistory());
+    }
+
+    @Test public void printBalance() {
+        BankAccount acc = new BankAccount();
+        acc.deposit(BigDecimal.valueOf(1000));
+        acc.deposit(BigDecimal.valueOf(2000));
+        acc.withdraw(BigDecimal.valueOf(500));
+
+        acc.printBalance();
+        String expectedBalance = "Current Balance: £2500.00";
+
+        assertEquals("Shows current balance formatted", expectedBalance, outputStreamCaptor.toString().trim());
+
     }
 }

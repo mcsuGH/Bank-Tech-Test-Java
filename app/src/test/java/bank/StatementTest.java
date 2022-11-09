@@ -8,7 +8,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 
 public class StatementTest {
