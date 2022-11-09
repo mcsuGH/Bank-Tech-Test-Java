@@ -103,4 +103,11 @@ public class BankAccountTest {
         thrown.expectMessage("You cannot withdraw more money than you have in your account");
         acc.withdraw(BigDecimal.valueOf(1000));
     }
+
+    @Test public void deposit_ThrowExceptionWhenInvalidMonetaryAmount() throws Exception {
+        BankAccount acc = new BankAccount();
+        thrown.expect(Exception.class);
+        thrown.expectMessage("Invalid amount");
+        acc.deposit(BigDecimal.valueOf(10.002));
+    }
 }

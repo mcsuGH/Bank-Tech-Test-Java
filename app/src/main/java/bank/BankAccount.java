@@ -31,11 +31,14 @@ public class BankAccount {
         transactionHistory.add(newTransaction);
     }
 
-    public void deposit(BigDecimal num) {
+    public void deposit(BigDecimal num) throws Exception {
         deposit(num, LocalDateTime.now());
     }
 
-    public void deposit(BigDecimal num, LocalDateTime date) {
+    public void deposit(BigDecimal num, LocalDateTime date) throws Exception {
+        if (num.scale() > 2) {
+            throw new Exception("Invalid amount");
+        }
         String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String formattedAmount = String.format("%.2f", num);
         BigDecimal newBalance = balance.add(num);
