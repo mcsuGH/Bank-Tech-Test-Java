@@ -10,10 +10,10 @@ Clone this repository using `git clone https://github.com/mcsuGH/Bank-Tech-Test-
 Ensure you have a JVM installed such as [Java 17 LTS](https://www.oracle.com/java/technologies/downloads/#jdk17-mac) and then run `gradle` to install any dependencies.
 \
 \
-To use the program, open the project in an IDE such as VSCode or IntelliJ and open the file `app/src/main/java/bank/Bank.java` to then run the project.
+To use the program, open the project in an IDE such as VSCode or IntelliJ and open the file `app/src/main/java/bank/BankAccount.java` to then run the project.
 \
 \
-Example of my code running:
+Example of my code running by writing code into App.java:
 ![Screenshot](https://i.imgur.com/SG71owX.png)
 
 ## Specification
@@ -40,7 +40,8 @@ date || credit || debit || balance
 **Given** a client makes a deposit of 1000 on 10-01-2012  
 **And** a deposit of 2000 on 13-01-2012  
 **And** a withdrawal of 500 on 14-01-2012  
-**When** she prints her bank balance 
+**When** she prints her bank balance
+\
 **Then** she would see
 
 ```
