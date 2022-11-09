@@ -32,6 +32,10 @@ public class BankAccount {
         transactionHistory.add(newTransaction);
     }
 
+    public void deposit(BigDecimal num) {
+        deposit(num, LocalDateTime.now());
+    }
+
     public void deposit(BigDecimal num, LocalDateTime date) {
         String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String formattedAmount = String.format("%.2f", num);
@@ -42,6 +46,9 @@ public class BankAccount {
         recordTransaction("credit", formattedAmount, formattedDate, formattedBalance);
     }
 
+    public void withdraw(BigDecimal num) {
+        withdraw(num, LocalDateTime.now());
+    }
     public void withdraw(BigDecimal num, LocalDateTime date) {
         String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String formattedAmount = String.format("%.2f", num);
