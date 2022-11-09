@@ -3,8 +3,9 @@ package bank;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BankAccountTest {
     @Test public void getBalance_InNewAccount() {
@@ -33,5 +34,12 @@ public class BankAccountTest {
         acc.withdraw(BigDecimal.valueOf(500));
 
         assertEquals("Deposit of 1000 and withdraw 500 into a new account has balance £500", BigDecimal.valueOf(500), acc.getBalance());
+    }
+
+    @Test public void getTransactionHistory_InNewAccount() {
+        BankAccount acc = new BankAccount();
+        ArrayList<HashMap> mockHistory = new ArrayList<HashMap>();
+
+        assertEquals("New account has empty history", mockHistory, acc.getTransactionHistory());
     }
 }
