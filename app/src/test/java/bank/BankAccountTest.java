@@ -12,8 +12,6 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.LocalDateTime;
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 
 public class BankAccountTest {
     private final PrintStream standardOut = System.out;
@@ -95,19 +93,15 @@ public class BankAccountTest {
 
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-    @Test public void withdraw_ThrowExceptionWhenWithdrawTooMuch() throws Exception {
+    @Test (expected = Exception.class)
+    public void withdraw_ThrowExceptionWhenWithdrawTooMuch() throws Exception {
         BankAccount acc = new BankAccount();
-        thrown.expect(Exception.class);
-        thrown.expectMessage("You cannot withdraw more money than you have in your account");
         acc.withdraw(BigDecimal.valueOf(1000));
     }
 
-    @Test public void deposit_ThrowExceptionWhenInvalidMonetaryAmount() throws Exception {
+    @Test (expected = Exception.class)
+    public void deposit_ThrowExceptionWhenInvalidMonetaryAmount() throws Exception {
         BankAccount acc = new BankAccount();
-        thrown.expect(Exception.class);
-        thrown.expectMessage("Invalid amount");
         acc.deposit(BigDecimal.valueOf(10.002));
     }
 }
