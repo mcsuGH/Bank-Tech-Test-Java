@@ -1,10 +1,23 @@
 package bank;
 
-import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.math.BigDecimal;
 
 public class BankAccountTest {
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @Before  public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @After public void tearDown() {
+        System.setOut(standardOut);
+    }
     @Test public void getBalance_InNewAccount() {
         BankAccount acc = new BankAccount();
         assertEquals("Balance of new account should be 0", BigDecimal.valueOf(0), acc.getBalance());
@@ -31,5 +44,13 @@ public class BankAccountTest {
         acc.withdraw(BigDecimal.valueOf(500));
 
         assertEquals("Deposit of 1000 and withdraw 500 into a new account has balance £500", BigDecimal.valueOf(500), acc.getBalance());
+    }
+
+    @Test public void printStatement_InNewAccount() {
+        BankAccount acc = new BankAccount();
+        String expectedStatement = "date || credit || debit || balance";
+        acc.printStatement();
+
+        assertEquals("printStatement in new account gives header only", expectedStatement, outputStreamCaptor.toString().trim());
     }
 }

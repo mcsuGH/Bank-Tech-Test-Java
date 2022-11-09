@@ -22,4 +22,8 @@ public class BankAccount {
         BigDecimal newBalance = balance.subtract(num);
         setBalance(newBalance);
     }
+
+    public void printStatement() {
+        System.out.println("date || credit || debit || balance");
+    }
 }
